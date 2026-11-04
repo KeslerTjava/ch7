@@ -24,9 +24,16 @@ public class StockTrader {
 			months[i] = in.nextInt();
 			prices[i] = in.nextDouble();
 		}
+		printData( years, months, prices);
 	}
     public static String monthName(int month){
 		String [] DateNames = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 		return DateNames[month-1];
+	}
+	public static void printData(int[] years, int[] months, double[] prices){
+		for ( int i =0 ; i < months.length; i++){
+		System.out.print(monthName(months[i]) + " " + years[i] + ": $");
+		System.out.printf("%.2f", prices[i]);
+	}
 	}
 }
