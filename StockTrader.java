@@ -1,3 +1,6 @@
+
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
@@ -6,7 +9,7 @@ import java.util.Scanner;
 public class StockTrader {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner in = new Scanner(new File("tiny.txt"));
+        Scanner in = new Scanner(new File("rising.txt"));
         String symbol = in.next();
         int n = in.nextInt();
 				
@@ -16,8 +19,8 @@ public class StockTrader {
 		int[] months = new int[n];
 		double[] prices = new double[n];
 		loadData(in ,years, months, prices);
-		System.out.println( "Lowest Price: $" + indexOfLowest(prices));
-		System.out.println( "Highest Price: $" + indexOfHighest(prices));
+		System.out.println( symbol + " " + "Lowest Price: $" + prices[indexOfLowest(prices)]  + " " + monthName(indexOfLowest(prices)) + " " + years[indexOfLowest(prices)]);
+		System.out.println( symbol + " " + "Highest Price: $" + prices[indexOfHighest(prices)] + " " + monthName(indexOfHighest(prices)) + " " + years[indexOfHighest(prices)]);
 	}
         // TODO: call loadData, then printData
    public static void loadData(Scanner in, int[] years, int[] months, double[] prices) {
@@ -38,21 +41,21 @@ public class StockTrader {
 		System.out.printf("%.2f%n", prices[i]);
 	}
 	}
-	public static double indexOfLowest(double[] prices) {
-		double lowestprice = prices[0];
+	public static int indexOfLowest(double[] prices) {
+		int lowest = 0;
 		for ( int i = 0; i < prices.length; i++) {
-			if ( prices[i] < lowestprice) {
-				lowestprice = prices[i];
-	
+			if ( prices[i] < prices[lowest]) {
+				lowest = i;
+
 }
-} return lowestprice;
+} return lowest;
 }
-	public static double indexOfHighest(double[] prices){
-		double Highestprice = prices[0];
+	public static int indexOfHighest(double[] prices){
+		int Highest = 0;
 		for ( int i = 0; i < prices.length; i++) {
-			if ( prices[i] > Highestprice) {
-				Highestprice = prices[i];
+			if ( prices[i] > prices[Highest]) {
+				Highest = i;
 		}
-	} return Highestprice;
+	} return Highest;
 }
 }
