@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class StockTrader {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner in = new Scanner(new File("rising.txt"));
+        Scanner in = new Scanner(new File("msft_2000_2010.txt"));
         String symbol = in.next();
         int n = in.nextInt();
 				
@@ -19,8 +19,10 @@ public class StockTrader {
 		int[] months = new int[n];
 		double[] prices = new double[n];
 		loadData(in ,years, months, prices);
-		System.out.println( symbol + " " + "Lowest Price: $" + prices[indexOfLowest(prices)]  + " " + monthName(indexOfLowest(prices)) + " " + years[indexOfLowest(prices)]);
-		System.out.println( symbol + " " + "Highest Price: $" + prices[indexOfHighest(prices)] + " " + monthName(indexOfHighest(prices)) + " " + years[indexOfHighest(prices)]);
+		int low = indexOfLowest(prices);
+		int high = indexOfHighest(prices);
+		System.out.println( symbol + " " + "Lowest Price: $" + prices[low]  + " " + monthName(months[low]) + " " + years[low]);
+		System.out.println( symbol + " " + "Highest Price: $" + prices[high] + " " + monthName(months[high]) + " " + years[high]);
 	}
         // TODO: call loadData, then printData
    public static void loadData(Scanner in, int[] years, int[] months, double[] prices) {
